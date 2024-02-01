@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Cards from "../components/Cards";
 import { useDispatch, useSelector } from "react-redux";
 import { newBoardDispatch, addCard } from "../redux/todoSlice";
-import toast, { Toaster } from "react-hot-toast";
 import {
   Button,
   Input,
@@ -16,7 +15,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const data = localStorage.getItem("persistedUser");
   const parseId = JSON.parse(data);
-  const userId = parseId.id;
+  const userId = parseId?.id;
 
   const states = useSelector((card) => card.todo);
 
@@ -32,7 +31,7 @@ const Home = () => {
   // });
   const filteredData = checkDataflow.filter((arr)=>{
     console.log('~ in ', arr);
-      return arr.userId === userId
+      return arr?.userId === userId
     })
 
 console.log("checkDataflowcheckDataflow" ,filteredData)
@@ -100,7 +99,6 @@ console.log("stateToMapstateToMapstateToMap" ,stateToMap)
       </Paper>
       </>
 
-      <Toaster />
     </Container>
   );
 };

@@ -4,7 +4,6 @@ import { Draggable, Droppable } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
 import { addTask, deleteTask, editTask } from "../redux/todoSlice";
 import { Box, Button, DialogTitle, TextareaAutosize } from "@mui/material";
-import { Toaster } from "react-hot-toast";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -20,7 +19,7 @@ const Tasks = ({ todoList }) => {
   const dispatch = useDispatch();
   const data = localStorage.getItem("persistedUser");
   const parseId = JSON.parse(data);
-  const uniquUserId = parseId.id;
+  const uniquUserId = parseId?.id;
 
   const [message, setMessage] = useState("");
   const [deadline, setDeadline] = useState("");
@@ -262,7 +261,6 @@ const Tasks = ({ todoList }) => {
       >
         Add Task
       </Button>
-      <Toaster />
     </div>
   );
 };

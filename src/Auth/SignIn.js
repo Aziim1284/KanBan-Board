@@ -19,6 +19,8 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 const Signin = () => {
+  const usususu = process.env.REACT_APP_API_KEY
+  console.log("checkingdat" ,usususu)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const error = useSelector((state) => state.auth.error);
@@ -84,16 +86,27 @@ const Signin = () => {
       })
     }
   };
+  // const firebaseConfig = {
+  //   apiKey: process.env.REACT_APP_API_KEY,
+  //   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  //   databaseURL:process.env.REACT_APP_DATABASE_URL,
+  //   projectId: process.env.REACT_APP_PROJECTID,
+  //   storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  //   messagingSenderId: process.env.REACT_APP_MESSAGINSENDERID,
+  //   appId: process.env.REACT_APP_APPID,
+  //   measurementId: process.env.REACT_APP_MEASUREMENTID,
+  // };
   const firebaseConfig = {
-    apiKey: process.env.REACT_APP_API_KEY,
-    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-    databaseURL:process.env.REACT_APP_DATABASE_URL,
-    projectId: process.env.REACT_APP_PROJECTID,
-    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-    messagingSenderId: process.env.REACT_APP_MESSAGINSENDERID,
-    appId: process.env.REACT_APP_APPID,
-    measurementId: process.env.REACT_APP_MEASUREMENTID,
+    apiKey: "AIzaSyDmDK1wyxIZJr6hgXZq1Wis-ythq3Ve1R8",
+    authDomain: "craet1.firebaseapp.com",
+    databaseURL: "https://craet1-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "craet1",
+    storageBucket: "craet1.appspot.com",
+    messagingSenderId: "916839362500",
+    appId: "1:916839362500:web:cc8437b6eac1cf345dfe91",
+    measurementId: "G-7BQEWQMTW1"
   };
+
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);

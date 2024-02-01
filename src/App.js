@@ -11,17 +11,17 @@ const SignIn = React.lazy(() => import("./Auth/SignIn"));
 const Signup = React.lazy(() => import("./Auth/Signup"));
 
 function App() {
-  const Dataa  =localStorage.getItem("persistedUser")
-const ParsedData = JSON.parse(Dataa)
-const userId = ParsedData.id
+  const Dataa = localStorage.getItem("persistedUser");
+  const ParsedData = JSON.parse(Dataa);
+  const userId = ParsedData?.id;
   const dispatch = useDispatch();
   const states = useSelector((card) => card.todo);
   const [stateToMap, setStateToMap] = useState(
     states?.currState === "mainCard" ? states?.mainCard : states?.newBoard
   );
-console.log("stateToMapstateToMap" , stateToMap)
+  console.log("stateToMapstateToMap", stateToMap);
   const changeState = () => {
-    dispatch(newBoardDispatch({userId:userId}));
+    dispatch(newBoardDispatch({ userId: userId }));
 
     if (states?.currState === "mainCard") {
       setStateToMap(states?.newBoard);
@@ -41,8 +41,9 @@ console.log("stateToMapstateToMap" , stateToMap)
             </Suspense>
           }
         >
-          <Route  exact path="/dashboard" element={<Home />} />
-          </Route>
+          <Route exact path="/dashboard" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
+        </Route>
         <Route
           element={
             <Suspense fallback={<div>Loading...</div>}>
